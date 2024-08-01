@@ -2,22 +2,34 @@ def show_balance():
     print(".........................................")
     print(f"Your balance is RM{balance:.2f}")
     print(".........................................")
-    pass
+    
 
 def deposit():
     print(".........................................")
     amount = float(input("Enter an amount to be deposited: "))
-
+    print(".........................................")
     if amount < 0:
         print("That's not a valid amount")
+        print(".........................................")
         return 0  
     else:
         return amount
-    pass
+    
 
 def withdrawal():
     print(".........................................")
-    pass
+    amount = float(input("Enter an amount to be withdrawn: "))
+    print(".........................................")
+    if amount > balance:
+        print("You have insufficient funds")
+        print(".........................................")
+        return 0
+    elif amount < 0:
+        print("Amount must not be less than 0")
+        print(".........................................")
+        return 0
+    else:
+        return amount
 
 balance=0
 is_running = True
@@ -36,7 +48,7 @@ while is_running:
     elif choice == "2":
         balance += deposit()
     elif choice == "3":
-        withdrawal()
+        balance -= withdrawal()
     elif choice == "4":
         is_running = False
     else:
